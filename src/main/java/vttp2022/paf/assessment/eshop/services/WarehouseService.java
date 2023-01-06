@@ -49,20 +49,20 @@ public class WarehouseService {
 
 		HttpEntity<String> entity = new HttpEntity<String>(requestJson, headers);
 		String response = restTemplate.postForObject(url, entity, String.class);
+		System.out.println("response: " + response);
 
 		OrderStatus orderStatus = new OrderStatus();
+		orderStatus.setOrderId(order.getOrderId());
+		orderStatus.setStatus("pending");
 
 		if (response.contains("\"deliveryId\"")) {
 			String[] str = response.split("\\s+");
 			String deliveryId = str[3].replaceAll("[\"}]", "");
 			System.out.println(deliveryId);
-			orderStatus.setOrderId(order.getOrderId());
 			orderStatus.setDeliveryId(deliveryId);
 			orderStatus.setStatus("dispatched");
-		} else {
-			orderStatus.setOrderId(order.getOrderId());
-			orderStatus.setStatus("pending");
 		}
+
 		return orderStatus;
 	}
 

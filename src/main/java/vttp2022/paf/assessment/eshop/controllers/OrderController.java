@@ -1,7 +1,6 @@
 package vttp2022.paf.assessment.eshop.controllers;
 
 import java.util.Date;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
-import jakarta.json.JsonObjectBuilder;
 import vttp2022.paf.assessment.eshop.models.Customer;
 import vttp2022.paf.assessment.eshop.models.Order;
 import vttp2022.paf.assessment.eshop.models.OrderStatus;
@@ -122,59 +120,6 @@ public class OrderController {
 				.body(jsonObj.toString());
 	}
 
-	// // Task 4
-	// @PostMapping(path = "http://chuklee.com/dispatch/{orderId}")
-	// // @GetMapping(path = "/{orderId}")
-	// public ResponseEntity<String> dispatchOrder(@PathVariable String orderId) {
-
-	// // try {
-	// Order order = orderRepository.findOrderByOrderId(orderId).get();
-
-	// JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
-	// for (LineItem li : order.getLineItems()) {
-	// JsonObjectBuilder objBuilder = Json.createObjectBuilder();
-	// objBuilder.add("item", li.getItem());
-	// objBuilder.add("quantity", li.getQuantity());
-	// arrBuilder.add(objBuilder);
-	// }
-	// JsonArray lineItemsObj = arrBuilder.build();
-
-	// JsonObjectBuilder objBuilder = Json.createObjectBuilder();
-	// objBuilder.add("orderId", defaultValue(order.getOrderId(), "null"));
-	// objBuilder.add("name", defaultValue(order.getName(), "null"));
-	// objBuilder.add("address", defaultValue(order.getAddress(), "null"));
-	// objBuilder.add("email", defaultValue(order.getEmail(), "null"));
-	// objBuilder.add("lineItems", defaultValue(lineItemsObj, null));
-	// objBuilder.add("createdBy", "Tan Jia Herng");
-
-	// // to dispatch
-	// OrderStatus orderStatus = warehouseService.dispatch(order);
-
-	// // JsonObjectBuilder dispatchResult = Json.createObjectBuilder();
-	// // objBuilder.add("orderId", orderStatus.getOrderId());
-	// // objBuilder.add("deliveryId", orderStatus.getDeliveryId());
-	// // if (orderStatus.getStatus().equals("dispatched"))
-	// // return ResponseEntity
-	// // .status(HttpStatus.OK)
-	// // .contentType(MediaType.APPLICATION_JSON)
-	// // .body(dispatchResult.toString());
-
-	// return ResponseEntity
-	// .status(HttpStatus.OK)
-	// .contentType(MediaType.APPLICATION_JSON)
-	// .body(objBuilder.build().toString());
-
-	// // } catch (Exception e) {
-
-	// // String errMsg = "User or user content not found for id " + orderId;
-
-	// // return ResponseEntity
-	// // .status(HttpStatus.NOT_FOUND)
-	// // .contentType(MediaType.APPLICATION_JSON)
-	// // .body(errMsg);
-	// // }
-	// }
-
 	// @GetMapping(path = "/customer/{name}")
 	// public ResponseEntity<String> checkIfCustomerExists(@PathVariable String
 	// name) {
@@ -202,11 +147,4 @@ public class OrderController {
 	// .body(jsonObj.toString());
 	// }
 	// }
-
-	// public <T> T defaultValue(T actualVal, T defaultVal) {
-	// if (null == actualVal)
-	// return defaultVal;
-	// return actualVal;
-	// }
-
 }
